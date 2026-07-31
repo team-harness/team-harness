@@ -376,15 +376,15 @@ function ThreadshareSection() {
       <div className="page-shell media-layout">
         <Reveal className="product-copy">
           <ProjectMark icon={MessagesSquare} tone="tone-sage">Threadshare</ProjectMark>
-          <p className="section-kicker">Portable agent conversation sharing</p>
-          <h2>把 Agent 过程变成<br />可审阅的交付资产</h2>
+          <p className="section-kicker">From conclusion to shared context</p>
+          <h2>结论没对齐，<br />回到 Agent 原始对话</h2>
           <p className="product-lead">
-            独立的 API、只读 Viewer 与 CLI，把 Codex、Claude 和 Paseo 会话导出为统一历史格式。默认公共服务开箱即用，也可以独立部署到自己的 Cloudflare 或阿里云环境。
+            同事和 Agent 聊了很久，最后只给你一个结论。当你觉得理解不到位，仅靠转述很难判断问题出在哪里。Threadshare Cloud 把完整对话生成只读链接，让团队直接看到问题如何被理解、工具如何被使用、结论如何形成，并在同一份上下文上继续讨论。
           </p>
           <ul className="feature-list">
-            <li><Check size={17} />保留对话、思考、工具活动与完整时间线</li>
-            <li><Check size={17} />Producer 侧递归脱敏凭据，Viewer 只读展示</li>
-            <li><Check size={17} />稳定 JSON 输出，适合 Agent 与自动化调用</li>
+            <li><Check size={17} />一个只读链接即可分享，无需接管电脑或转发 session 文件</li>
+            <li><Check size={17} />从任意用户消息开始，保留对话、思考、工具活动与完整时间线</li>
+            <li><Check size={17} />支持 Codex、Claude 和 Paseo，上传前递归脱敏凭据</li>
           </ul>
           <div className="product-actions">
             <a className="button button-dark" href={links.threadshareDemo} target="_blank" rel="noreferrer">
