@@ -17,7 +17,6 @@ import {
   MessagesSquare,
   Network,
   Pin,
-  Play,
   Server,
   Share2,
   ShieldCheck,
@@ -41,11 +40,10 @@ const links = {
 };
 
 const workflow = [
-  { number: "01", label: "研发", product: "Paseo", icon: Play },
-  { number: "02", label: "协作", product: "cs-agent-mcp", icon: Network },
-  { number: "03", label: "约束", product: "CodeStable", icon: ShieldCheck },
-  { number: "04", label: "分享", product: "Threadshare", icon: Share2 },
-  { number: "05", label: "交付", product: "Licell", icon: CloudUpload },
+  { number: "01", label: "编码工具", product: "Paseo", icon: Code2 },
+  { number: "02", label: "稳定编码", product: "CodeStable + cs-agent-mcp", icon: ShieldCheck },
+  { number: "03", label: "团队协同", product: "Threadshare", icon: MessagesSquare },
+  { number: "04", label: "交付环境", product: "Licell", icon: CloudUpload },
 ];
 
 const paseoFeatures = [
@@ -115,9 +113,9 @@ function Header() {
       <div className="nav-shell">
         <Brand />
         <nav className="desktop-nav" aria-label="主导航">
-          <a href="#stack">工具链</a>
-          <a href="#paseo">定制 Paseo</a>
-          <a href="#principles">工程理念</a>
+          <a href="#stack">能力框架</a>
+          <a href="#paseo">编码工具</a>
+          <a href="#codestable">稳定编码</a>
         </nav>
         <a className="nav-github" href={links.organization} target="_blank" rel="noreferrer">
           <Github size={17} />
@@ -137,12 +135,12 @@ function Header() {
         </button>
       </div>
       <nav id="mobile-navigation" className={`mobile-nav ${open ? "is-open" : ""}`} aria-label="移动端导航">
-        <a href="#stack" onClick={close}>工具链</a>
-        <a href="#paseo" onClick={close}>定制 Paseo</a>
-        <a href="#cs-agent-mcp" onClick={close}>cs-agent-mcp</a>
-        <a href="#codestable" onClick={close}>CodeStable</a>
-        <a href="#threadshare" onClick={close}>Threadshare</a>
-        <a href="#licell" onClick={close}>Licell</a>
+        <a href="#stack" onClick={close}>能力框架</a>
+        <a href="#paseo" onClick={close}>编码工具 · Paseo</a>
+        <a href="#codestable" onClick={close}>稳定编码 · CodeStable</a>
+        <a href="#cs-agent-mcp" onClick={close}>多 Agent 协同 · cs-agent-mcp</a>
+        <a href="#threadshare" onClick={close}>团队协同 · Threadshare</a>
+        <a href="#licell" onClick={close}>交付环境 · Licell</a>
       </nav>
     </header>
   );
@@ -185,24 +183,24 @@ function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="eyebrow"><span /> Agent engineering systems</div>
+          <div className="eyebrow"><span /> Harness for the agent-native team</div>
           <h1>Team Harness</h1>
-          <p className="hero-lead">把 Agent 从一次对话，带进完整交付链路。</p>
+          <p className="hero-lead">提升人、Agent、团队与环境的整体效率。</p>
           <p className="hero-support">
-            围绕研发、协作、约束、分享与部署，构建团队真正可以持续使用的 Agent 工程工具。
+            从随时可用的编码工具，到稳定研发、上下文协同和 Agent 友好的云交付，为团队搭起一套完整的工程 Harness。
           </p>
           <div className="hero-actions">
             <a className="button button-primary" href="#stack">
               <ArrowDown size={18} />
-              查看工具链
+              查看能力框架
             </a>
             <GithubLink href={links.organization} label="开源项目" />
           </div>
         </motion.div>
-        <div className="hero-proof" aria-label="Team Harness 工具链摘要">
-          <div><strong>05</strong><span>开源工具</span></div>
-          <div><strong>Codex + Claude</strong><span>一等支持</span></div>
-          <div><strong>Local to Cloud</strong><span>完整交付面</span></div>
+        <div className="hero-proof" aria-label="Team Harness 能力摘要">
+          <div><strong>04 Layers</strong><span>覆盖完整团队系统</span></div>
+          <div><strong>05 Tools</strong><span>开源工程工具</span></div>
+          <div><strong>Human to Cloud</strong><span>从想法到交付</span></div>
         </div>
       </div>
     </section>
@@ -214,9 +212,9 @@ function WorkflowBand() {
     <section className="workflow-band" id="stack">
       <div className="page-shell">
         <Reveal className="workflow-heading">
-          <p className="section-kicker">The harness loop</p>
-          <h2>一个从研发到交付的<br />Agent 工程闭环</h2>
-          <p>每个工具解决一个明确环节，又能组合成一条可审查、可复用的团队工作流。</p>
+          <p className="section-kicker">Four layers, one system</p>
+          <h2>一套覆盖人、Agent、<br />团队与环境的 Harness</h2>
+          <p>我们不只优化一次编码任务，而是打通个人生产力、稳定研发、团队接力与云端交付。</p>
         </Reveal>
         <div className="workflow-grid">
           {workflow.map(({ number, label, product, icon: Icon }, index) => (
@@ -244,11 +242,11 @@ function PaseoSection() {
               <span>Paseo</span>
               <span className="custom-label">Team Harness Custom Build</span>
             </div>
-            <h2>为团队运行态<br />重新定制的 Paseo</h2>
+            <h2>团队随时可用的<br />Agent 编码工作台</h2>
           </div>
           <div className="paseo-intro">
             <p>
-              在持续同步上游能力的基础上，我们补齐团队真正关心的控制面：全局状态与成本、可审阅分享、既有 Agent 调度和跨 Host 连续性。
+              Paseo 让团队成员在桌面或移动端随时发起、接续和管理编码任务。我们在持续同步上游能力的同时，补齐全局状态、成本、分享和跨 Host 连续性，让 vibe coding 真正进入日常生产。
             </p>
             <GithubLink href={links.paseo} label="查看定制版本" />
           </div>
@@ -272,8 +270,8 @@ function PaseoSection() {
         </Reveal>
 
         <div className="custom-heading">
-          <p className="section-kicker">What we customized</p>
-          <p>以下能力由 Team Harness fork 维护，不把上游已有的通用功能重复计算在内。</p>
+          <p className="section-kicker">Built for team productivity</p>
+          <p>这些定制能力让个人随时能开始，也让团队看得见所有 Agent 的运行状态与使用成本。</p>
         </div>
         <div className="paseo-capabilities">
           {paseoFeatures.map(({ number, icon: Icon, title, description }, index) => (
@@ -295,10 +293,10 @@ function CsAgentSection() {
       <div className="page-shell split-layout">
         <Reveal className="product-copy">
           <ProjectMark icon={Network} tone="tone-cyan">cs-agent-mcp</ProjectMark>
-          <p className="section-kicker">Local multi-agent control plane</p>
-          <h2>把多个编码 Agent<br />接入同一棵协作树</h2>
+          <p className="section-kicker">02 / Stable coding · collaboration</p>
+          <h2>复杂任务，交给多个<br />Agent 协同完成</h2>
           <p className="product-lead">
-            一个本地 stdio MCP 服务，把 Codex、Claude 与其他 ACP Agent 统一成 `cs_agent_*` 工具。根 Agent 可以创建、等待、取消和销毁子 Agent，子 Agent 也能继续递归委派。
+            稳定编码不只需要约束，也需要协作。cs-agent-mcp 把 Codex、Claude 与其他 ACP Agent 接入同一个本地控制面，让主 Agent 能按任务分工、并行推进、汇总结果，并始终共享同一份工作区上下文。
           </p>
           <ul className="feature-list">
             <li><Check size={17} />Codex、Claude 重点实机支持，并复用本机登录状态</li>
@@ -355,13 +353,13 @@ function CodeStableSection() {
         </Reveal>
         <Reveal className="product-copy" delay={0.08}>
           <ProjectMark icon={Braces} tone="tone-amber">CodeStable Skills</ProjectMark>
-          <p className="section-kicker">Software lifecycle orchestration</p>
-          <h2>约束软件生命周期，<br />而不是堆叠 <span className="nowrap">Agent 角色</span></h2>
+          <p className="section-kicker">02 / Stable coding · constraints</p>
+          <h2>给 Agent 一副马鞍，<br />让人始终握住缰绳</h2>
           <p className="product-lead">
-            面向严肃工程的 AI 编码工作流。CodeStable 围绕需求、架构、特性、问题与决策组织项目记忆，让人和 Agent 在跨会话、跨阶段的迭代里仍然遵守同一组事实。
+            更强的 Agent 不会自动带来稳定的软件研发。CodeStable 用一组薄而明确的 Skills 组织需求、架构、特性、问题与决策：给 Agent 更多有效上下文，让工程经验持续留存，也让人更好地驾驭 Agent 完成复杂任务。
           </p>
           <div className="inline-facts">
-            <span>人在环</span><span>项目记忆</span><span>可复现实验</span><span>Codex / Claude</span>
+            <span>Thin harness</span><span>More context</span><span>经验留存</span><span>人在驾驶位</span>
           </div>
           <GithubLink href={links.codeStable} label="获取 Skills" />
         </Reveal>
@@ -376,15 +374,15 @@ function ThreadshareSection() {
       <div className="page-shell media-layout">
         <Reveal className="product-copy">
           <ProjectMark icon={MessagesSquare} tone="tone-sage">Threadshare</ProjectMark>
-          <p className="section-kicker">From conclusion to shared context</p>
-          <h2>结论没对齐，<br />回到 Agent 原始对话</h2>
+          <p className="section-kicker">03 / Human collaboration</p>
+          <h2>人与人协同时，<br />把 Agent 上下文一起交接</h2>
           <p className="product-lead">
-            同事和 Agent 聊了很久，最后只给你一个结论。当你觉得理解不到位，仅靠转述很难判断问题出在哪里。Threadshare Cloud 把完整对话生成只读链接，让团队直接看到问题如何被理解、工具如何被使用、结论如何形成，并在同一份上下文上继续讨论。
+            当每个人都在和 Agent 协同，人与人之间的交接就不能只剩一个结论。Threadshare 把完整对话生成只读链接，让同事看到问题如何被理解、工具如何被使用、结论如何形成，并从同一份上下文继续讨论。
           </p>
           <ul className="feature-list">
-            <li><Check size={17} />一个只读链接即可分享，无需接管电脑或转发 session 文件</li>
-            <li><Check size={17} />从任意用户消息开始，保留对话、思考、工具活动与完整时间线</li>
-            <li><Check size={17} />支持 Codex、Claude 和 Paseo，上传前递归脱敏凭据</li>
+            <li><Check size={17} />不只分享结论，也分享形成结论的完整上下文</li>
+            <li><Check size={17} />从任意消息开始，保留对话、思考、工具活动与时间线</li>
+            <li><Check size={17} />支持 Codex、Claude 和 Paseo，分享前自动递归脱敏</li>
           </ul>
           <div className="product-actions">
             <a className="button button-dark" href={links.threadshareDemo} target="_blank" rel="noreferrer">
@@ -420,10 +418,10 @@ function LicellSection() {
         </Reveal>
         <Reveal className="product-copy" delay={0.08}>
           <ProjectMark icon={CloudUpload} tone="tone-coral">Licell CLI</ProjectMark>
-          <p className="section-kicker">Alibaba Cloud delivery surface</p>
-          <h2>Agent 写出的服务，<br />稳稳交付到阿里云</h2>
+          <p className="section-kicker">04 / Agent-native delivery</p>
+          <h2>让 Agent 把代码<br />直接交付到阿里云</h2>
           <p className="product-lead">
-            面向人类与 Agent 的阿里云部署 CLI。用一条主线串起 FC、OSS、ACR、DNS、SSL 与 CDN，同时保留原子资源命令、结构化输出、catalog 和 Skills。
+            云基础设施也应该面向 Agent，而不只是面向控制台操作。Licell 为阿里云提供 Agent 可发现、可调用、可验证的交付界面，用一条主线串起 FC、OSS、ACR、DNS、SSL 与 CDN，让人和 Agent 使用同一套部署语言。
           </p>
           <div className="command-line"><span>$</span> licell deploy --type api --target preview</div>
           <ul className="feature-list compact-list">
@@ -443,24 +441,29 @@ function Principles() {
     <section className="principles" id="principles">
       <div className="page-shell">
         <Reveal className="principles-heading">
-          <p className="section-kicker">Built for durable work</p>
-          <h2>Agent 友好，<br />团队可控。</h2>
+          <p className="section-kicker">Human × Agent × Team × Environment</p>
+          <h2>不只让 Agent 更快，<br />让整个系统一起变快。</h2>
         </Reveal>
         <div className="principles-grid">
           <Reveal className="principle">
             <Code2 size={23} />
-            <h3>机器可调用</h3>
-            <p>稳定 CLI、结构化协议、MCP 与 Skills，让 Agent 获得明确且可验证的操作表面。</p>
+            <h3>人 · 随时能开始</h3>
+            <p>把 Agent 编码变成团队成员随时随地可用的生产力工具，而不是固定在一台电脑上的一次对话。</p>
           </Reveal>
           <Reveal className="principle" delay={0.05}>
             <ShieldCheck size={23} />
-            <h3>人仍在环</h3>
-            <p>权限、审阅、历史与项目约束保留给团队，不把重要工程决策藏进黑盒自动化。</p>
+            <h3>Agent · 稳定受控</h3>
+            <p>用薄约束、更多上下文、项目记忆和多 Agent 协作，让能力更强，也让过程更可靠。</p>
           </Reveal>
           <Reveal className="principle" delay={0.1}>
-            <Workflow size={23} />
-            <h3>链路能闭合</h3>
-            <p>从本地 Agent 到协作、知识、分享和云端交付，每个环节都能独立使用，也能彼此衔接。</p>
+            <MessagesSquare size={23} />
+            <h3>团队 · 上下文不断</h3>
+            <p>让人与人的协同带上完整 Agent 对话，减少转述、误解和重复探索。</p>
+          </Reveal>
+          <Reveal className="principle" delay={0.15}>
+            <CloudUpload size={23} />
+            <h3>环境 · 直接可交付</h3>
+            <p>把云基础设施变成 Agent 可操作的工程表面，让代码顺畅进入真实运行环境。</p>
           </Reveal>
         </div>
       </div>
@@ -474,7 +477,7 @@ function Footer() {
       <div className="page-shell footer-cta">
         <div>
           <p className="section-kicker">Open source by default</p>
-          <h2>把下一段 Agent 工作流，<br />交给更可靠的 Harness。</h2>
+          <h2>让人和 Agent 一起工作，<br />也让整个团队一起变快。</h2>
         </div>
         <a className="button button-primary" href={links.organization} target="_blank" rel="noreferrer">
           <Github size={18} />访问 Team Harness<ArrowUpRight size={16} />
@@ -482,7 +485,7 @@ function Footer() {
       </div>
       <div className="page-shell footer-bottom">
         <Brand />
-        <p>Agent engineering tools for teams.</p>
+        <p>Harness for people, agents, teams and infrastructure.</p>
         <div>
           <a href={links.paseo} target="_blank" rel="noreferrer">Paseo</a>
           <a href={links.csAgent} target="_blank" rel="noreferrer">cs-agent-mcp</a>
@@ -503,8 +506,8 @@ export default function App() {
         <Hero />
         <WorkflowBand />
         <PaseoSection />
-        <CsAgentSection />
         <CodeStableSection />
+        <CsAgentSection />
         <ThreadshareSection />
         <LicellSection />
         <Principles />

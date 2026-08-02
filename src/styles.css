@@ -393,7 +393,7 @@ img {
 
 .workflow-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   margin-top: 76px;
   border-top: 1px solid #bdc4bf;
   border-bottom: 1px solid #bdc4bf;
@@ -986,7 +986,7 @@ img {
 
 .principles-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   margin-top: 76px;
   border-top: 1px solid rgba(12, 19, 10, 0.35);
   border-bottom: 1px solid rgba(12, 19, 10, 0.35);
@@ -1193,10 +1193,6 @@ img {
     border-right: 1px solid #bdc4bf;
   }
 
-  .workflow-step:last-child {
-    grid-column: 1 / -1;
-  }
-
   .workflow-step:nth-child(2) .workflow-arrow,
   .workflow-step:nth-child(4) .workflow-arrow {
     display: none;
@@ -1254,6 +1250,18 @@ img {
 
   .principles h2 {
     margin-top: 26px;
+  }
+
+  .principles-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .principle:nth-child(-n + 2) {
+    border-bottom: 1px solid rgba(12, 19, 10, 0.35);
+  }
+
+  .principle:nth-child(2) {
+    border-right: 1px solid rgba(12, 19, 10, 0.35);
   }
 
   .footer-cta {
