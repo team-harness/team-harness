@@ -82,7 +82,7 @@ export function Footer() {
       <div className="page-shell footer-cta">
         <div>
           <p className="section-kicker">Open source by default</p>
-          <h2>让人和 Agent 一起工作，<br />也让整个团队一起变快。</h2>
+          <h2>把工程流程交给 Agent，<br />把决策留给人。</h2>
         </div>
         <a className="button button-primary" href={links.organization} target="_blank" rel="noreferrer">
           <Github size={18} />访问 Team Harness<ArrowUpRight size={16} />

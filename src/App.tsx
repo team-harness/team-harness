@@ -369,7 +369,7 @@ function Principles() {
       <div className="page-shell">
         <Reveal className="principles-heading">
           <p className="section-kicker">Human × Agent × Team × Environment</p>
-          <h2>不只让 Agent 更快，<br />让整个系统一起变快。</h2>
+          <h2>人不再是执行者，<br />而是流程里的那道 Gate。</h2>
         </Reveal>
         <div className="principles-grid">
           <Reveal className="principle">

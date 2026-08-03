@@ -14,13 +14,16 @@ const introLayers = [
 ];
 
 const articleSections = [
-  { id: "system", number: "01", title: "从更强的 Agent，到更强的系统" },
-  { id: "coding", number: "02", title: "第一层：编码工具，让每个人随时能够开始" },
-  { id: "stable", number: "03", title: "第二层：稳定编码，给 Agent 一副马鞍" },
-  { id: "collaboration", number: "04", title: "第三层：团队协同，上下文本身就是交付物" },
-  { id: "delivery", number: "05", title: "第四层：交付环境，云基础设施也应该面向 Agent" },
-  { id: "workflow", number: "06", title: "五个工具，如何组成一条工作流" },
-  { id: "efficiency", number: "07", title: "我们想提升的，是整体效率" },
+  { id: "assembly", number: "01", title: "语言和框架，正在变成新的汇编" },
+  { id: "engineering", number: "02", title: "软件工程没有过时，它换了执行者" },
+  { id: "gate", number: "03", title: "人的新位置是 Gate" },
+  { id: "layers", number: "04", title: "四层，是 Gate 模型的推论" },
+  { id: "access", number: "05", title: "第一层：接入不该有前提条件" },
+  { id: "constraint", number: "06", title: "第二层：把工程规范写成 Agent 的约束" },
+  { id: "context", number: "07", title: "第三层：上下文是交付物" },
+  { id: "delivery", number: "08", title: "第四层：最后一段路，Agent 要能自己走完" },
+  { id: "workflow", number: "09", title: "一次任务怎么走完" },
+  { id: "framework", number: "10", title: "那谁还关心框架" },
 ] as const;
 
 export default function IntroPage() {
@@ -29,9 +32,9 @@ export default function IntroPage() {
     const description = document.querySelector<HTMLMetaElement>('meta[name="description"]');
     const previousDescription = description?.content;
 
-    document.title = "Team Harness：让人、Agent、团队与环境一起变快";
+    document.title = "Team Harness：软件工程下沉，人回到决策位";
     if (description) {
-      description.content = "深入了解 Team Harness 的四层工程体系，以及 Paseo、CodeStable、cs-agent-mcp、Threadshare 与 Licell。";
+      description.content = "语言和框架正在变成新的汇编，工程规范下沉为 Agent 的约束，人回到 Gate 的位置。这是 Team Harness 的四层体系，以及 Paseo、CodeStable、cs-agent-mcp、Threadshare 与 Licell。";
     }
 
     return () => {
@@ -55,8 +58,8 @@ export default function IntroPage() {
           >
             <a className="article-back-link" href="/"><ArrowLeft size={16} />返回首页</a>
             <p className="section-kicker">The Team Harness philosophy</p>
-            <h1>Team Harness：<br />让人、Agent、团队与环境<br />一起变快</h1>
-            <p>从个人编码到云端交付，完整理解我们为什么构建这套面向 Agent 时代的团队工程 Harness。</p>
+            <h1>Team Harness：<br />软件工程下沉，<br />人回到决策位</h1>
+            <p>软件工程二十年的积累没有过时，需要重新编排的是人和 AI 的关系——流程下沉给 Agent，人站回 Gate 的位置。</p>
           </motion.div>
           <div className="intro-layer-strip page-shell" aria-label="Team Harness 四层能力">
             {introLayers.map(({ number, label, product }) => (
@@ -103,8 +106,8 @@ export default function IntroPage() {
 
         <section className="article-closing">
           <div className="page-shell article-closing-inner">
-            <p className="section-kicker">Human × Agent × Team × Environment</p>
-            <h2>让 Agent 的能力，<br />真正沉淀为团队的工程能力。</h2>
+            <p className="section-kicker">Process sinks down, judgment moves up</p>
+            <h2>软件工程没有消失，<br />它变成了 Agent 每次都会执行的东西。</h2>
             <div className="product-actions">
               <a className="button button-primary" href="/"><ArrowLeft size={17} />返回 Team Harness</a>
               <GithubLink href={links.organization} label="查看开源项目" />
