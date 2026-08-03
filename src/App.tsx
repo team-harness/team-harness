@@ -375,7 +375,7 @@ function Principles() {
           <Reveal className="principle">
             <Code2 size={23} />
             <h3>人 · 只在关键点介入</h3>
-            <p>不逐行写代码，只在有后果的地方放行、拦截或补上缺的信息。前提是接入没有门槛——任何设备、任何时间，切进任何一个项目。</p>
+            <p>不逐行写代码，只在有后果的地方放行、拦截或补上缺的信息。前提是接入和算力都没有门槛：任何设备切进任何项目，Agent 跑在开发机、服务器还是 Pod 上都一样。</p>
           </Reveal>
           <Reveal className="principle" delay={0.05}>
             <ShieldCheck size={23} />
