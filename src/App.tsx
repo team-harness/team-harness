@@ -374,23 +374,23 @@ function Principles() {
         <div className="principles-grid">
           <Reveal className="principle">
             <Code2 size={23} />
-            <h3>人 · 随时能开始</h3>
-            <p>把 Agent 编码变成团队成员随时随地可用的生产力工具，而不是固定在一台电脑上的一次对话。</p>
+            <h3>人 · 只在关键点介入</h3>
+            <p>不逐行写代码，只在有后果的地方放行、拦截或补上缺的信息。前提是接入没有门槛——任何设备、任何时间，切进任何一个项目。</p>
           </Reveal>
           <Reveal className="principle" delay={0.05}>
             <ShieldCheck size={23} />
-            <h3>Agent · 稳定受控</h3>
-            <p>用薄约束、更多上下文、项目记忆和多 Agent 协作，让能力更强，也让过程更可靠。</p>
+            <h3>Agent · 稳定往下走</h3>
+            <p>需求、架构、审查这些规范下沉成每次都执行的约束。薄约束配厚上下文，让它走得更远，也在真该问的地方停下来。</p>
           </Reveal>
           <Reveal className="principle" delay={0.1}>
             <MessagesSquare size={23} />
-            <h3>团队 · 上下文不断</h3>
-            <p>让人与人的协同带上完整 Agent 对话，减少转述、误解和重复探索。</p>
+            <h3>团队 · Gate 能交接</h3>
+            <p>结论背后的完整对话本身就是交付物。接手的人能回到过程里，而不是只听一段转述。</p>
           </Reveal>
           <Reveal className="principle" delay={0.15}>
             <CloudUpload size={23} />
-            <h3>环境 · 直接可交付</h3>
-            <p>把云基础设施变成 Agent 可操作的工程表面，让代码顺畅进入真实运行环境。</p>
+            <h3>环境 · 交付自己走完</h3>
+            <p>云平台需要一个 Agent 能发现、能调用、能验证的接口，否则自动化堵在部署这步，人被迫退回执行者。</p>
           </Reveal>
         </div>
       </div>

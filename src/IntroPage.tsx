@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { isValidElement, useEffect, type ReactNode } from "react";
 import { motion } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
@@ -25,6 +25,30 @@ const articleSections = [
   { id: "workflow", number: "09", title: "一次任务怎么走完" },
   { id: "framework", number: "10", title: "那谁还关心框架" },
 ] as const;
+
+// 目录锚点靠标题字符串精确匹配（见下方 h2 渲染），改动 intro.md 的 h2 而忘了同步
+// articleSections 不会报错，只会让锚点静默失效。开发期直接把不一致打出来。
+if (import.meta.env.DEV) {
+  const headings = [...introMarkdown.matchAll(/^## (.+)$/gm)].map((match) => match[1].trim());
+  const unregistered = headings.filter((title) => !articleSections.some((section) => section.title === title));
+  const stale = articleSections.filter(({ title }) => !headings.includes(title)).map(({ title }) => title);
+
+  if (unregistered.length || stale.length) {
+    console.error(
+      ["[IntroPage] intro.md 的 h2 与 articleSections 不一致，目录锚点会失效。",
+        unregistered.length ? `  intro.md 中未登记的标题：${unregistered.join(" / ")}` : "",
+        stale.length ? `  articleSections 中已失效的条目：${stale.join(" / ")}` : "",
+      ].filter(Boolean).join("\n"),
+    );
+  }
+}
+
+function toPlainText(node: ReactNode): string {
+  if (typeof node === "string" || typeof node === "number") return String(node);
+  if (Array.isArray(node)) return node.map(toPlainText).join("");
+  if (isValidElement(node)) return toPlainText((node.props as { children?: ReactNode }).children);
+  return "";
+}
 
 export default function IntroPage() {
   useEffect(() => {
@@ -88,7 +112,8 @@ export default function IntroPage() {
                 components={{
                   h1: () => null,
                   h2: ({ children }) => {
-                    const section = articleSections.find(({ title }) => title === String(children));
+                    const heading = toPlainText(children);
+                    const section = articleSections.find(({ title }) => title === heading);
                     return <h2 id={section?.id}>{children}</h2>;
                   },
                   a: ({ href, children }) => {
