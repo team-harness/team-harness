@@ -23,7 +23,8 @@ const articleSections = [
   { id: "context", number: "07", title: "第三层：上下文是交付物" },
   { id: "delivery", number: "08", title: "第四层：最后一段路，Agent 要能自己走完" },
   { id: "workflow", number: "09", title: "一次任务怎么走完" },
-  { id: "framework", number: "10", title: "那谁还关心框架" },
+  { id: "boundary", number: "10", title: "什么时候不需要这套" },
+  { id: "framework", number: "11", title: "那谁还关心框架" },
 ] as const;
 
 // 目录锚点靠标题字符串精确匹配（见下方 h2 渲染），改动 intro.md 的 h2 而忘了同步
