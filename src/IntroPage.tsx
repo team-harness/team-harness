@@ -18,7 +18,7 @@ const articleSections = [
   { id: "engineering", number: "02", title: "软件工程没有过时，它换了执行者" },
   { id: "gate", number: "03", title: "人的新位置是 Gate" },
   { id: "layers", number: "04", title: "四层，是 Gate 模型的推论" },
-  { id: "access", number: "05", title: "第一层：解绑设备，也解绑算力" },
+  { id: "access", number: "05", title: "第一层：解绑设备、算力和环境" },
   { id: "constraint", number: "06", title: "第二层：把工程规范写成 Agent 的约束" },
   { id: "context", number: "07", title: "第三层：上下文是交付物" },
   { id: "delivery", number: "08", title: "第四层：最后一段路，Agent 要能自己走完" },
