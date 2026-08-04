@@ -80,7 +80,7 @@ LLM 不具备这个性质。翻译是概率性的，同样的输入可能给出�
 | 团队协同 | 让人与人的协作带上完整的 Agent 对话上下文 | [Threadshare](https://github.com/team-harness/threadshare) |
 | 交付环境 | 让 Agent 能够发现、调用并验证云端交付能力 | [Licell](https://github.com/agents-infrastructure/licell) |
 
-四层各自能单独用，但整体速度取决于最弱的那一层。只补一层，往往看不到什么变化。
+四层各自能单独用，单独补一层也确实有改善。只是它们之间更像相乘而不是相加，最弱的那一层决定整体能到哪。
 
 ## 第一层：解绑设备、算力和环境
 
