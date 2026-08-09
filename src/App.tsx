@@ -428,7 +428,7 @@ function WritingBand() {
       <div className="page-shell">
         <Reveal className="section-head">
           <p className="section-kicker">Writing</p>
-          <h2>我们写下来的判断</h2>
+          <h2>一些经验文章</h2>
           <p>做这套东西时想清楚的事，以及还没想清楚的地方。</p>
         </Reveal>
         <div className="writing-grid">
