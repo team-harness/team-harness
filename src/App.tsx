@@ -1,4 +1,4 @@
-import { lazy, Suspense, type ReactNode } from "react";
+import { lazy, Suspense, useEffect, type ReactNode } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import {
   Activity,
@@ -6,8 +6,10 @@ import {
   ArrowRight,
   ArrowUpRight,
   Braces,
+  CalendarDays,
   Check,
   CircleDollarSign,
+  Clock,
   CloudUpload,
   Code2,
   Globe2,
@@ -23,8 +25,11 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { Footer, GithubLink, Header, links } from "./SiteChrome";
+import { formatDate, getPost, posts, type Post } from "./content";
+import { navigate, useRouter, usePathname } from "./router";
 
-const IntroPage = lazy(() => import("./IntroPage"));
+const PostPage = lazy(() => import("./PostPage"));
+const BlogListPage = lazy(() => import("./BlogListPage"));
 
 const workflow = [
   { number: "01", label: "编码工具", product: "Paseo", icon: Code2 },
@@ -113,7 +118,7 @@ function Hero() {
           <p className="hero-support">
             从随时可用的编码工具，到稳定研发、上下文协同和 Agent 友好的云交付，为团队搭起一套完整的工程 Harness。
           </p>
-          <a className="hero-story-link" href="/intro">
+          <a className="hero-story-link" href="/blog/intro">
             深入了解 Team Harness <ArrowRight size={16} />
           </a>
           <div className="hero-actions">
@@ -398,15 +403,48 @@ function Principles() {
   );
 }
 
-export default function App() {
-  if (window.location.pathname.replace(/\/+$/, "") === "/intro") {
-    return (
-      <Suspense fallback={<div className="intro-loading"><span>Team Harness</span></div>}>
-        <IntroPage />
-      </Suspense>
-    );
-  }
+function WritingCard({ post, delay }: { post: Post; delay: number }) {
+  return (
+    <Reveal className="writing-card" delay={delay}>
+      <a href={`/blog/${post.slug}`}>
+        {post.kicker && <p className="section-kicker">{post.kicker}</p>}
+        <h3>{post.title}</h3>
+        <p>{post.summary}</p>
+        <div className="article-meta">
+          {post.date && <span><CalendarDays size={15} />{formatDate(post.date)}</span>}
+          <span><Clock size={15} />约 {post.readingMinutes} 分钟</span>
+        </div>
+        <span className="writing-card-cta">读这篇<ArrowRight size={16} /></span>
+      </a>
+    </Reveal>
+  );
+}
 
+function WritingBand() {
+  if (posts.length === 0) return null;
+
+  return (
+    <section className="writing-band" id="writing">
+      <div className="page-shell">
+        <Reveal className="section-head">
+          <p className="section-kicker">Writing</p>
+          <h2>我们写下来的判断</h2>
+          <p>做这套东西时想清楚的事，以及还没想清楚的地方。</p>
+        </Reveal>
+        <div className="writing-grid">
+          {posts.slice(0, 3).map((post, index) => (
+            <WritingCard key={post.slug} post={post} delay={index * 0.05} />
+          ))}
+        </div>
+        <a className="writing-all-link" href="/blog">
+          查看全部文章<ArrowRight size={16} />
+        </a>
+      </div>
+    </section>
+  );
+}
+
+function HomePage() {
   return (
     <>
       <Header />
@@ -419,8 +457,57 @@ export default function App() {
         <ThreadshareSection />
         <LicellSection />
         <Principles />
+        <WritingBand />
       </main>
       <Footer />
     </>
+  );
+}
+
+function NotFoundPage() {
+  return (
+    <>
+      <Header />
+      <main className="notfound-page">
+        <div className="page-shell">
+          <p className="section-kicker">404</p>
+          <h1>这个地址没有内容</h1>
+          <p>页面可能已经移动或还没发布。</p>
+          <div className="product-actions">
+            <a className="button button-primary" href="/">返回首页</a>
+            <a className="button button-secondary" href="/blog">看看文章</a>
+          </div>
+        </div>
+      </main>
+      <Footer />
+    </>
+  );
+}
+
+function resolve(pathname: string) {
+  if (pathname === "/") return <HomePage />;
+  if (pathname === "/blog") return <BlogListPage />;
+
+  const match = /^\/blog\/([^/]+)$/.exec(pathname);
+  const post = match ? getPost(decodeURIComponent(match[1])) : undefined;
+  if (post) return <PostPage post={post} />;
+
+  return <NotFoundPage />;
+}
+
+export default function App() {
+  useRouter();
+  const pathname = usePathname();
+
+  // 这篇文章按 /intro 发出去过（公众号「阅读原文」就挂的这个），地址得一直有效。
+  useEffect(() => {
+    if (pathname === "/intro") navigate("/blog/intro", { replace: true });
+  }, [pathname]);
+  if (pathname === "/intro") return null;
+
+  return (
+    <Suspense fallback={<div className="intro-loading"><span>Team Harness</span></div>}>
+      {resolve(pathname)}
+    </Suspense>
   );
 }

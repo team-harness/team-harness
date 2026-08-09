@@ -36,6 +36,7 @@ export function Header() {
           <a href="/#stack">能力框架</a>
           <a href="/#paseo">编码工具</a>
           <a href="/#codestable">稳定编码</a>
+          <a href="/blog">文章</a>
         </nav>
         <a className="nav-github" href={links.organization} target="_blank" rel="noreferrer">
           <Github size={17} />
@@ -61,6 +62,7 @@ export function Header() {
         <a href="/#cs-agent-mcp" onClick={close}>多 Agent 协同 · cs-agent-mcp</a>
         <a href="/#threadshare" onClick={close}>团队协同 · Threadshare</a>
         <a href="/#licell" onClick={close}>交付环境 · Licell</a>
+        <a href="/blog" onClick={close}>文章</a>
       </nav>
     </header>
   );

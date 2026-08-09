@@ -1,4 +1,12 @@
-# Team Harness：软件工程下沉，人回到决策位
+---
+title: Team Harness：软件工程下沉，人回到决策位
+date: 2026-08-06
+kicker: The Team Harness philosophy
+summary: 软件工程二十年的积累没有过时，需要重新编排的是人和 AI 的关系——流程下沉给 Agent，人站回 Gate 的位置。
+description: 语言和框架正在变成新的汇编，工程规范下沉为 Agent 的约束，人回到 Gate 的位置。这是 Team Harness 的四层体系，以及 Paseo、CodeStable、cs-agent-mcp、Threadshare 与 Licell。
+heroImage: /assets/paseo-hero.webp
+featured: true
+---
 
 我自己全面用 Agent 写代码大约半年，交付确实快了很多，这一点没什么可怀疑的。
 
