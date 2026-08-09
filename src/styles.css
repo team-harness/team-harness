@@ -1128,8 +1128,12 @@ img {
   filter: saturate(0.68) contrast(1.08);
 }
 
+/* 底图是产品截图，细节很密。均匀压暗会让标题发灰，所以左侧和底部压得更重一些，
+   正文那一侧留出对比度，右上角保持能看清截图在演示什么。 */
 .intro-hero-scrim {
-  background: rgba(4, 6, 5, 0.62);
+  background:
+    linear-gradient(180deg, rgba(4, 6, 5, 0.5) 0%, rgba(4, 6, 5, 0.72) 62%, rgba(8, 10, 9, 0.96) 100%),
+    linear-gradient(90deg, rgba(4, 6, 5, 0.72) 0%, rgba(4, 6, 5, 0.34) 62%, rgba(4, 6, 5, 0.2) 100%);
 }
 
 .intro-hero-inner {
